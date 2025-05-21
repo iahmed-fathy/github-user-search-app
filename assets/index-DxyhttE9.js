@@ -1,0 +1,8 @@
+(function(){const c=document.createElement("link").relList;if(c&&c.supports&&c.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))o(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&o(n)}).observe(document,{childList:!0,subtree:!0});function l(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function o(t){if(t.ep)return;t.ep=!0;const r=l(t);fetch(t.href,r)}})();const a=document.querySelector(".cards"),d=document.querySelector(".input"),f=document.querySelector("input[value='users']"),m=document.querySelector(".button"),h=document.querySelector(".message"),y=document.querySelector(".loader"),s=e=>{h.textContent=e?`* ${e}`:""},i=e=>{let c="";(e==null?void 0:e.length)===0?c="<p>No Result Found</p>":e===null?c="":e!=null&&e.length&&e.map(l=>{c+=`
+      <article class="card">
+        <a href="${l.html_url}" target="_blank">
+          <img class="img" loading="lazy" src="${l.avatar_url}"/>
+          <h2 class="name">${l.login}</h2>
+        </a>
+      </article>
+      `}),a.innerHTML=c};function u(e){y.classList.toggle("hidden",!e),e&&i(null)}const g="https://api.github.com/search/users?q=",p=(e,c)=>{const l=c?"+type:user":"+type:org";if(s(),!e.trim()){s("Please Fill Out The Search Field");return}u(!0),fetch(`${g}${e}${l}`).then(o=>o.json()).then(o=>i(o.items)).finally(()=>u(!1))};m.addEventListener("click",e=>{e.preventDefault(),p(d.value,f.checked)});
