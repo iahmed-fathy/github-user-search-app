@@ -40,14 +40,11 @@ a {
 
 .container {
   display: flex;
+  place-items: center;
   flex-direction: column;
   max-width: 60rem;
   margin: 0 auto 2rem;
   background-color: var(--color-bg);
-
-  @media (max-width: 400px) {
-    padding: 0 2rem;
-  }
 }
 
 .relative {
@@ -70,11 +67,15 @@ a {
 .form {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 2rem;
   background-color: var(--color-card);
   border-radius: var(--default-radius);
   padding: 0.5rem 0.5rem 0.5rem 2rem;
+  @media (max-width: 400px) {
+    width: 300px;
+  }
 }
 
 .choices {
