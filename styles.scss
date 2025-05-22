@@ -38,6 +38,11 @@ a {
   text-align: center;
 }
 
+a h2 {
+  text-wrap: wrap; /* صححت من warp إلى wrap */
+  width: 150px;
+}
+
 .container {
   display: flex;
   place-items: center;
@@ -73,7 +78,10 @@ a {
   background-color: var(--color-card);
   border-radius: var(--default-radius);
   padding: 0.5rem 0.5rem 0.5rem 2rem;
-  @media (max-width: 400px) {
+}
+
+@media (max-width: 400px) {
+  .form {
     width: 300px;
   }
 }
@@ -109,19 +117,25 @@ a {
   color: white;
   cursor: pointer;
   font-weight: bold;
+}
 
-  &[disabled] {
-    background-color: #007bff80;
-    cursor: not-allowed;
-  }
+.button[disabled] {
+  background-color: #007bff80;
+  cursor: not-allowed;
 }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 2rem;
   margin-top: var(--margin-after-form);
+}
+
+@media (max-width: 400px) {
+  .cards {
+    max-width: 300px;
+  }
 }
 
 .card {
@@ -130,11 +144,14 @@ a {
   justify-content: center;
   align-items: center;
   flex-basis: 30%;
-  overflow: hidden;
   gap: 1rem;
+  max-width: 100px;
+  margin: 2rem;
+}
 
-  @media (max-width: 400px) {
-    flex-basis: 45%;
+@media (max-width: 400px) {
+  .card {
+    flex-basis: 50%;
   }
 }
 
@@ -142,6 +159,13 @@ a {
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
+}
+
+@media (max-width: 400px) {
+  .img {
+    width: 10rem;
+    height: 10rem;
+  }
 }
 
 .name {
@@ -155,18 +179,18 @@ a {
 .loader {
   text-align: center;
   margin-top: var(--margin-after-form);
+}
 
-  &::before {
-    content: "";
-    display: inline-block;
-    border: solid 5px #cfd0d1;
-    border-bottom-color: var(--color-blue);
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
-    will-change: transform;
-    animation: 1s linear infinite spin;
-  }
+.loader::before {
+  content: "";
+  display: inline-block;
+  border: solid 5px #cfd0d1;
+  border-bottom-color: var(--color-blue);
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  will-change: transform;
+  animation: 1s linear infinite spin;
 }
 
 @keyframes spin {
